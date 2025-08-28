@@ -2,6 +2,8 @@
 import cors from "cors";
 import express, { Request, Response } from "express";
 import cookieParser from "cookie-parser";
+import { userRoutes } from "./modules/user/user.routes";
+import { globalErrorHandler } from "./errorHelpers/globalErrorHandler";
 // error handlers
 
 // create express app
@@ -40,5 +42,11 @@ app.use(express.urlencoded({ extended: true }));
 app.get("/", (req: Request, res: Response) => {
   res.send("Hello World!");
 });
+
+app.use("/api/auth", userRoutes);
+
+
+
+app.use(globalErrorHandler);
 
 export default app;
