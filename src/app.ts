@@ -2,7 +2,7 @@
 import cors from "cors";
 import express, { Request, Response } from "express";
 import cookieParser from "cookie-parser";
-import { userRoutes } from "./modules/user/user.routes";
+import { authRoutes } from "./modules/auth/auth.routes";
 import { globalErrorHandler } from "./errorHelpers/globalErrorHandler";
 // error handlers
 
@@ -43,9 +43,7 @@ app.get("/", (req: Request, res: Response) => {
   res.send("Hello World!");
 });
 
-app.use("/api/auth", userRoutes);
-
-
+app.use("/api/auth", authRoutes);
 
 app.use(globalErrorHandler);
 

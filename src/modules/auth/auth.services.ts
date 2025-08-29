@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import { User } from "./user.model";
+import { User } from "../user/user.model";
 import AppError from "../../errorHelpers/AppError";
 import bcrypt from "bcryptjs";
 import { createToken } from "../../utils/userToken";
@@ -53,4 +53,26 @@ const loginUser = async (req: Request, res: Response, next: NextFunction) => {
   }
 };
 
-export const UserService = { createUser, loginUser };
+const logoutUser = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    res.clearCookie("accessToken", {
+      httpOnly: true,
+      secure: true,
+      sameSite: "none",
+    });
+    sendResponse(res, 200, "User logged out successfully", {});
+  } catch (error) {
+    next(error);
+  }
+};
+
+const getMe = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const user = await User.findById(req.user.userId);
+    sendResponse(res, 200, "User fetched successfully", { user });
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const AuthService = { createUser, loginUser, getMe, logoutUser };
