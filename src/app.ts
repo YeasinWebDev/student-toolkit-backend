@@ -4,6 +4,7 @@ import express, { Request, Response } from "express";
 import cookieParser from "cookie-parser";
 import { authRoutes } from "./modules/auth/auth.routes";
 import { globalErrorHandler } from "./errorHelpers/globalErrorHandler";
+import { scheduleRoutes } from "./modules/schedule/schedule.routes";
 // error handlers
 
 // create express app
@@ -44,6 +45,7 @@ app.get("/", (req: Request, res: Response) => {
 });
 
 app.use("/api/auth", authRoutes);
+app.use("/api/schedule", scheduleRoutes)
 
 app.use(globalErrorHandler);
 
