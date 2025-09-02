@@ -7,6 +7,7 @@ import { globalErrorHandler } from "./errorHelpers/globalErrorHandler";
 import { scheduleRoutes } from "./modules/schedule/schedule.routes";
 import { budgetRoutes } from "./modules/budget/budget.route";
 import { questionRoutes } from "./modules/question/question.route";
+import { plannerRoutes } from "./modules/planner/planner.routes";
 // error handlers
 
 // create express app
@@ -50,6 +51,7 @@ app.use("/api/auth", authRoutes);
 app.use("/api/schedule", scheduleRoutes)
 app.use("/api/budget", budgetRoutes)
 app.use('/api/questions', questionRoutes)
+app.use('/api/planner', plannerRoutes)
 
 app.use(globalErrorHandler);
 
