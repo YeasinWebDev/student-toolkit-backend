@@ -1,0 +1,11 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.plannerRoutes = void 0;
+const express_1 = require("express");
+const authMiddleware_1 = require("../../middleware/authMiddleware");
+const planner_services_1 = require("./planner.services");
+exports.plannerRoutes = (0, express_1.Router)();
+exports.plannerRoutes.post("/create", authMiddleware_1.authMiddleware, planner_services_1.plannerServices.createPlanner);
+exports.plannerRoutes.get("/", authMiddleware_1.authMiddleware, planner_services_1.plannerServices.getPlanner);
+exports.plannerRoutes.put("/:id", authMiddleware_1.authMiddleware, planner_services_1.plannerServices.donePlanner);
+exports.plannerRoutes.delete("/:id", authMiddleware_1.authMiddleware, planner_services_1.plannerServices.deletePlanner);

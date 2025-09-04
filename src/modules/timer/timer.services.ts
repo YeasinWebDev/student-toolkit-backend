@@ -40,7 +40,7 @@ const DailyTimer = async (req: Request, res: Response, next: NextFunction) => {
 
     const ans = await Timer.find({
       userId: req.user.userId,
-      createdAt: { $gte: startOfDay },
+      createdAt: { $gte: new Date().setHours(0, 0, 0, 0) },
     });
 
     sendResponse(res, 200, "Timer fetched successfully", { ans, ans2 });

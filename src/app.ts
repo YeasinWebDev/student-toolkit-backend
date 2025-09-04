@@ -15,7 +15,7 @@ import { timerRoutes } from "./modules/timer/timer.routes";
 const app = express();
 
 // middleware
-const allowedOrigins = ["http://localhost:5173", "https://a5-frontend-two.vercel.app"];
+const allowedOrigins = ["http://localhost:5173", "https://stu-tool-fr.vercel.app"];
 
 app.use(
   cors({
@@ -49,11 +49,11 @@ app.get("/", (req: Request, res: Response) => {
 });
 
 app.use("/api/auth", authRoutes);
-app.use("/api/schedule", scheduleRoutes)
-app.use("/api/budget", budgetRoutes)
-app.use('/api/questions', questionRoutes)
-app.use('/api/planner', plannerRoutes)
-app.use('/api/timer', timerRoutes)
+app.use("/api/schedule", scheduleRoutes);
+app.use("/api/budget", budgetRoutes);
+app.use("/api/questions", questionRoutes);
+app.use("/api/planner", plannerRoutes);
+app.use("/api/timer", timerRoutes);
 
 app.use(globalErrorHandler);
 

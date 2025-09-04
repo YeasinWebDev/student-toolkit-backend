@@ -1,0 +1,10 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.questionRoutes = void 0;
+const express_1 = require("express");
+const question_services_1 = require("./question.services");
+const authMiddleware_1 = require("../../middleware/authMiddleware");
+exports.questionRoutes = (0, express_1.Router)();
+exports.questionRoutes.post("/create", authMiddleware_1.authMiddleware, question_services_1.questionServices.createQuestion);
+exports.questionRoutes.get("/", question_services_1.questionServices.getallQuestions);
+exports.questionRoutes.post("/submit", authMiddleware_1.authMiddleware, question_services_1.questionServices.saveAnswer);

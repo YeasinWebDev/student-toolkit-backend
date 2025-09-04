@@ -1,4 +1,3 @@
-import { TGenericErrorResponse } from "../app/interfaces/error.types"
 
 /**
  * Handles Zod validation errors. This function processes an error object
@@ -9,6 +8,8 @@ import { TGenericErrorResponse } from "../app/interfaces/error.types"
  * @returns {TGenericErrorResponse} A generic error response object with a 400
  * status code, a message indicating a Zod error, and an array of error sources.
  */
+
+import { TGenericErrorResponse } from "../errorHelpers/globalErrorHandler"
 
 export const handleZodError = (err: any): TGenericErrorResponse => {
     const errorSources: any[] = []

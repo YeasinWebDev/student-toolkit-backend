@@ -1,8 +1,6 @@
 import mongoose from "mongoose";
-import {
-  TErrorSources,
-  TGenericErrorResponse,
-} from "../app/interfaces/error.types";
+import { TErrorSources, TGenericErrorResponse } from "../errorHelpers/globalErrorHandler";
+
 
 
 
